@@ -1,0 +1,43 @@
+body
+		.rolling {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+
+.rolling li {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+}
+
+.rolling {
+	list-style: none;
+}
+
+.rolling a:link {
+	text-decoration: none;
+	color: black;
+}
+
+.rolling a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+.rolling a:active {
+	text-decoration: none;
+	color: black;
+}
+
+.rolling a:hover {
+	text-decoration: none;
+	color: red;
+}
+
+#notice {
+	margin: auto;
+	width: 30%;
+	height: 50px;
+	overflow: hidden;
+}

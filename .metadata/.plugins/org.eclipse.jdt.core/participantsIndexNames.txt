@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-/Users/imseonghun/Desktop/KingTheJoy/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1173667874.index
-/KingTheJoy/src/main/java

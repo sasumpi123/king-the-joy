@@ -1,0 +1,64 @@
+.home-img img{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+}
+.home-div{
+    position: relative;
+    margin: auto;
+    top:120px;
+    height:600px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 5%;
+    font-weight: bold; 
+}
+ 
+.image-center{
+    text-align: center;
+}
+
+.home-div img{
+    height: 100px; 
+    margin-top: 20px;
+}
+@import "compass/css3";
+
+.table-editable {
+  position: relative;
+  
+  .glyphicon {
+    font-size: 20px;
+  }
+}
+
+.table-remove {
+  color: #700;
+  cursor: pointer;
+  
+  &:hover {
+    color: #f00;
+  }
+}
+
+.table-up, .table-down {
+  color: #007;
+  cursor: pointer;
+  
+  &:hover {
+    color: #00f;
+  }
+}
+
+.table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  
+  &:hover {
+    color: #0b0;
+  }
+}

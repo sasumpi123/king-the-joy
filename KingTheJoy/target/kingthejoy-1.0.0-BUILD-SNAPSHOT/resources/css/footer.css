@@ -1,0 +1,10 @@
+.outFooter{
+    background: rgba(240, 240, 240, 0.6);
+    display: table-cell;
+    vertical-align: middle;
+    height: 200px;
+    width:100vw;
+}
+.footer{
+    text-align: center;
+} 

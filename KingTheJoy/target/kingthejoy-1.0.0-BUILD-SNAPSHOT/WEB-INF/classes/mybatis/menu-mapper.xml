@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menu">
+<resultMap type="menuDto" id="menuMap">
+	<result column="menu_seq" property="menu_seq"/>
+	<result column="member_seq" property="menu_seq"/>
+	<result column="menu_start" property="start"/>
+	<result column="menu_type" property="title"/>
+	<result column="menu_info" property="description"/>
+	<result column="school_seq" property="school_seq"/>
+	<result column="menu_end" property="end"/>
+</resultMap>
+
+
+<select id="menuList" parameterType="int" resultMap="menuMap">
+select menu_start, menu_end, menu_type, menu_info from menu where school_seq = #{school_seq}
+
+</select>
+
+<insert id="menuInsert">
+INSERT INTO MENU
+VALUES(MENUSEQ.NEXTVAL, #{member_seq}, #{start}, #{title}, #{description}, #{school_seq}, #{end})
+</insert>
+
+</mapper>

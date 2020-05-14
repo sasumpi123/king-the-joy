@@ -1,3 +1,0 @@
-INDEX VERSION 1.4+/Users/imseonghun/Desktop/KingTheJoy/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-3877438989.index
-1173667874.index

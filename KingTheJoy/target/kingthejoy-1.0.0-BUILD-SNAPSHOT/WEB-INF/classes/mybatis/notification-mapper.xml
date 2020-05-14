@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="notification">
+	<select id="selectList" resultType="notificationDto" parameterType="int">
+		select * from notification
+		where school_seq = #{school_seq}
+		order by notification_seq desc
+	</select>
+	<select id="selectOne" parameterType="int"
+		resultType="notificationDto">
+		select * 
+		from notification 
+		where notification_seq = #{notification_seq}
+	</select>
+
+	<insert id="insert" parameterType="notificationDto">
+		INSERT INTO NOTIFICATION
+		values(
+		notificationSeq.nextval,
+		#{notification_title},
+		#{notification_content},
+		sysdate,
+		#{notification_writer},
+		#{member_seq}
+		)
+	</insert>
+
+	<update id="update" parameterType="notificationDto">
+		UPDATE notification
+		SET 
+		notification_title = #{notification_title},
+		notification_content = #{notification_content}
+		WHERE notification_seq = #{notification_seq}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from notification 
+		where notification_seq = #{notification_seq}
+	</delete>
+	
+	<select id="selectMember" resultType="int" parameterType="int">
+		SELECT member_seq FROM MEMBER WHERE MEMBER_ROLE = 0
+	</select>
+	
+	<select id="selectLastNotification" resultType="int">
+		SELECT notification_seq FROM (SELECT * FROM notification ORDER BY notification_seq) WHERE rownum = 1
+	</select>
+	
+	<insert id="insertCheck" parameterType="java.util.List">
+		<foreach collection="list" item="item" separator=" " open="INSERT ALL" close="SELECT * FROM SYS.DUAL">
+		into notificationcheck 
+		values
+        (#{item.notification_seq},#{item.member_flag},#{item.member_seq},#{item.school_seq})
+   		</foreach>
+	</insert>
+	
+	<select id="selectWritten" parameterType="notificationCheckDto" resultType="int">
+		select member_flag from notificationcheck where member_seq = #{member_seq} and notification_seq = #{notification_seq}
+	</select>
+	
+	<update id="updateWritten" parameterType="notificationCheckDto">
+		update notificationcheck
+		set member_flag = 1
+		where member_seq = #{member_seq} and notification_seq = #{notification_seq}
+	</update>
+</mapper>
