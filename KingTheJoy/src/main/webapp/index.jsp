@@ -11,9 +11,11 @@
 function window_onload(){
 	setTimeout('go_url()',5000)
 }
+
 function go_url(){
 	location.href="home.do"
 }
+
 </script>
 <title>Insert title here</title>
 </head>

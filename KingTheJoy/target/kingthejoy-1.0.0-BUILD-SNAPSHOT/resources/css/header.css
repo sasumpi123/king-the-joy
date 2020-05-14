@@ -1,0 +1,32 @@
+.header-logo img{
+    width: 200px;
+    height: 75px;
+    margin-left: 0px;
+}
+
+.navbar-nav{
+    margin-left: 7%;
+    text-align:center;
+    width: 100%;
+    position: relative;
+    z-index: -7px;
+}
+
+.nav-link{
+    margin-left: 50px;
+    font-weight: bold;
+    color:black;
+    position: relative;
+}
+
+.navbar-brand header-logo{
+	position: relative;
+}
+
+.ml-auto button{
+    margin-right: 0px;
+}
+
+.navbar{
+    border-bottom: 2.5px solid grey;
+}

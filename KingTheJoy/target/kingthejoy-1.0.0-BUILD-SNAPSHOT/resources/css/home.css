@@ -1,0 +1,62 @@
+.home-img img{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+}
+.home-div{
+    position: relative;
+    margin: auto;
+    top:120px;
+    height:500px;
+    background-color: rgba(255,255,255,0.5);
+    text-align: center;
+    border-radius: 50%;
+}
+
+.kingthejoyLogo img{
+    height: 100px;
+    margin-top: 20px;
+}
+
+.id-textbox{
+    margin-top: 30px;
+}
+
+.pass-textbox{
+    margin-top:15px;
+}
+
+.id-textbox input{
+    width:60%;
+    margin-left: 8%;
+}
+
+.pass-textbox input{
+    width:60%;
+    margin-left:5%;
+}
+
+.login-button{
+    margin-top: 30px;
+}
+
+.reset-button{
+    margin-left:30px;
+}
+
+.search-button{
+    margin-top: 5px;
+    width: 280px;
+}
+
+
+#kakao-login-btn{  
+	width:277.5px;
+	height:60px;
+}
+
+.marginTop{
+	padding-top:5px;
+}
