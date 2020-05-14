@@ -2,13 +2,8 @@
 # Created by https://www.gitignore.io/api/java,eclipse
 # Edit at https://www.gitignore.io/?templates=java,eclipse
 
-/Servers/
-.Servers
-*Servers
-*.Servers
 ### Eclipse ###
 .metadata
-*.metadata
 bin/
 tmp/
 *.tmp
@@ -19,7 +14,6 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-.xmi
 
 # External tool builders
 .externalToolBuilders/

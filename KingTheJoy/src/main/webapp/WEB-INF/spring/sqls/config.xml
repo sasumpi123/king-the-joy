@@ -4,21 +4,13 @@
 
 	<typeAliases>
 		<typeAlias type="com.project.kingthejoy.member.dto.MemberDto" alias="memberDto" />
-		<typeAlias type="com.project.kingthejoy.menu.dto.MenuDto" alias="menuDto" />
-		<typeAlias type="com.project.kingthejoy.notification.dto.NotificationDto" alias="notificationDto"/>
-		<typeAlias type="com.project.kingthejoy.notification.dto.NotificationCheckDto" alias="notificationCheckDto"/>
-		<typeAlias type="com.project.kingthejoy.school.dto.SchoolDto" alias="schoolDto" />
-
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/member-mapper.xml" />
-		<mapper resource="/mybatis/menu-mapper.xml" />
-		<mapper resource="/mybatis/notification-mapper.xml"/>
 	</mappers>
 	
 	<!-- resource : src/main/resources -->
-
 
 
 </configuration>

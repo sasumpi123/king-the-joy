@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+   
+   <!-- 회원가입 -->
+   <insert id="join" parameterType="memberDto">
+      INSERT INTO MEMBER(
+                      MEMBER_SEQ
+                     ,MEMBER_ID
+                     ,MEMBER_PW
+                     ,MEMBER_NAME
+                     ,MEMBER_PHONE
+                     ,MEMBER_EMAIL
+                     ,MEMBER_ROLE 
+                     ,MEMBER_OADDR
+                     ,MEMBER_ADDR
+                     ,MEMBER_DETAILADDR)
+               VALUES
+                     ( member_seq.nextval,
+                     #{member_id},
+                     #{member_pw},
+                     #{member_name},
+                     #{member_phone},
+                     #{member_email},
+                     #{member_role},
+                     #{member_oaddr},
+                     #{member_addr},
+                     #{member_detailaddr})
+   </insert>
+   
+   <!-- 로그인 확인 -->
+   <select id="loginCheck" resultType="String">
+      SELECT MEMBER_NAME FROM MEMBER
+      WHERE MEMBER_ID = #{member_id} AND MEMBER_PW = #{member_pw}
+   </select>
+   
+   <select id="memberView" resultType="memberDto">
+      SELECT
+          MEMBER_ID
+         ,MEMBER_NAME
+         ,MEMBER_SEQ
+         ,MEMBER_PHONE
+         ,MEMBER_EMAIL
+         ,MEMBER_OADDR
+         ,MEMBER_ADDR
+         ,MEMBER_DETAILADDR
+         ,MEMBER_DATE
+         ,MEMBER_ROLE
+      FROM MEMBER
+      WHERE MEMBER_ID = #{member_id} AND MEMBER_PW = #{member_pw}
+   </select>
+   
+   <insert id = "insertChildInfo" parameterType="Map">
+      INSERT INTO CHILDREN
+         (
+             CHILDREN_SEQ
+            ,MEMBER_SEQ
+            ,CHILDREN_NAME
+            ,RIDING_QUIT
+         )
+      VALUES
+         (
+             children_seq.nextval
+            ,#{member_seq}
+            ,#{children_name}
+            ,'N'
+         )
+   </insert>
+
+   <insert id = "insertSchoolInfo" parameterType="Map">
+      INSERT INTO SCHOOL_LIST
+         (
+             SCHOOL_SEQ
+            ,SCHOOL_NAME
+            ,SCHOOL_ADDR
+         )
+      VALUES
+         (
+             school_seq.nextval
+            ,#{school_name}
+            ,#{school_addr}
+         )   
+   </insert>
+   
+   <select id="selectSchool" parameterType="schoolDto" resultType="schoolDto">
+      SELECT * FROM SCHOOL_LIST
+      WHERE #{school_name} = SCHOOL_NAME AND #{school_addr} = SCHOOL_ADDR
+   </select>
+   
+   <select id="selectChildrenSeqOfSchool" parameterType="int" resultType="int">
+      SELECT CHILDREN_SEQ
+      FROM
+         (SELECT CHILDREN_SEQ
+         FROM CHILDREN
+         WHERE MEMBER_SEQ = #{member_seq}
+         ORDER BY CHILDREN_SEQ DESC)
+      WHERE ROWNUM = 1
+   </select>
+   <select id="selectMemberSeqOfSchool" parameterType="int" resultType="int">
+	  SELECT MEMBER_SEQ
+	     FROM
+	        (SELECT CHILDREN_SEQ
+	        FROM CHILDREN
+	        WHERE MEMBER_SEQ = #{member_seq}
+	        ORDER BY CHILDREN_SEQ DESC)
+	     WHERE ROWNUM = 1
+   </select>
+   
+   <select id="selectSchoolSeq" parameterType="Map" resultType="int">
+      SELECT SCHOOL_SEQ
+      FROM SCHOOL_LIST
+      WHERE SCHOOL_NAME = #{school_name} AND SCHOOL_ADDR = #{school_addr}
+   </select>
+   
+   <insert id="insertSchool" parameterType="Map">
+      INSERT INTO SCHOOL
+      VALUES(
+          #{children_seq}
+         ,#{member_seq}
+         ,#{school_seq}
+      )
+   </insert>
+   
+   <select id="selectSchoolSeqOfParent" parameterType="int" resultType="int">
+      <![CDATA[
+         SELECT SCHOOL_SEQ
+         FROM SCHOOL
+         WHERE MEMBER_SEQ = #{member_seq}
+         AND ROWNUM >= 1 AND ROWNUM < 2
+      ]]>
+   </select>
+   <insert id="teacherMasterInsertSchool" parameterType="Map">
+    INSERT INTO SCHOOL(member_seq, school_seq)
+      VALUES(
+          #{member_seq}
+         ,#{school_seq}
+      )
+   </insert>
+   
+   <select id="selectSchoolSeqOfMasterAndTeacher" parameterType="int" resultType="int">
+   	SELECT SCHOOL_SEQ
+    FROM
+         (SELECT SCHOOL_SEQ
+         FROM SCHOOL
+         WHERE MEMBER_SEQ = #{member_seq}
+         ORDER BY MEMBER_SEQ DESC)
+      WHERE ROWNUM = 1
+   </select>
+   
+</mapper>

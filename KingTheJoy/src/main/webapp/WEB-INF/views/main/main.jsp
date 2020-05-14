@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${sessionScope.memberDto.member_name }님이 로그인중입니다.
+${sessionScope.member_name }님이 로그인중입니다.
 <a href="logout.do">로그아웃</a>
 </body>
 </html>
