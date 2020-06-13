@@ -16,7 +16,6 @@
 		<intercept-url pattern="/study/teacherStudyBookList.do"  access="hasAnyAuthority('ROLE_MANAGER','ROLE_ADMIN')"/>
 		<intercept-url pattern="/study/studyBookDelete.do"  access="hasAnyAuthority('ROLE_MANAGER','ROLE_ADMIN')"/>
 		<intercept-url pattern="/study/pptUpload.do"  access="hasAnyAuthority('ROLE_MANAGER','ROLE_ADMIN')"/>
-		
 		<intercept-url pattern="/study/selectStudyBooks.do"  access="hasAuthority('ROLE_USER')"/>
 		<intercept-url pattern="/study/studyBookOne.do"  access="hasAuthority('ROLE_USER')"/>
 		
@@ -27,9 +26,6 @@
 	              default-target-url="/member/loginCheck.do" 
                   always-use-default-target="true"
             />
-	         <!--      authentication-success-handler-ref="loginSuccessHandler" -->
-
-
         <csrf disabled="true"/> 
         <logout/>
     </http>
